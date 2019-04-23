@@ -4,7 +4,8 @@ class Work < ApplicationRecord
     return works.sample
   end
 
-  def get_top_ten
-    return self.sample(10)
+  def self.get_top_ten(category)
+    works = Work.where(category: category)
+    return works.sample(10)
   end
 end

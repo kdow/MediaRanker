@@ -8,5 +8,32 @@
   <%= spotlight.description %>
 </section>
 <h2>Top Movies</h2>
+  <% movies = Work.get_top_ten("movie") %>
+  <% movies.each do |movie| %>
+    <li>
+      <strong>
+        <%= movie.title %>
+      </strong>
+      by <%= movie.creator %>
+    </li>
+  <% end %>
 <h2>Top Books</h2>
+  <% books = Work.get_top_ten("book") %>
+  <% books.each do |book| %>
+    <li>
+      <strong>
+        <%= book.title %>
+      </strong>
+      by <%= book.creator %>
+    </li>
+  <% end %>
 <h2>Top Albums</h2>
+  <% albums = Work.get_top_ten("album") %>
+  <% albums.each do |album| %>
+    <li>
+      <strong>
+        <%= album.title %>
+      </strong>
+      by <%= album.creator %>
+    </li>
+  <% end %>
