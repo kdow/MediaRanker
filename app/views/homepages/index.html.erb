@@ -1,4 +1,12 @@
-<h2>Media Spotlight</h2>
+<section>
+  <h2>Media Spotlight</h2>
+  <% spotlight = Work.get_spotlight %>
+  <strong>
+    <%= spotlight.title %>
+  </strong>
+  by <%= spotlight.creator %>
+  <%= spotlight.description %>
+</section>
 <h2>Top Movies</h2>
 <h2>Top Books</h2>
 <h2>Top Albums</h2>
