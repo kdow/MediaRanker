@@ -1,0 +1,16 @@
+<section>
+  <h2>List of Works</h2>
+  <ul>
+    <% @works.each do |work| %>
+      <h3>
+        <li>
+          <strong>
+            <%= work.title %>
+          </strong>
+          by <%= work.creator %>
+          <%= work.category %>
+          <%= work.publication_year %>
+        </li>
+    <% end %>
+  </ul>
+</section>
