@@ -32,6 +32,16 @@ class WorksController < ApplicationController
     end
   end
 
+  def edit
+    work_id = params[:id]
+
+    @work = Work.find_by(id: work_id)
+
+    unless @work
+      head :not_found
+    end
+  end
+
   private
 
   def work_params
