@@ -1,12 +1,27 @@
 <h2>Add a new work</h2>
 
+<% if @work.errors.messages.any? %>
+  <section class="alert alert-warning">
+    A problem occurred: Could not create <%= @work.category %>
+    <ul>
+      <% @work.errors.messages.each do |column, problem_list| %>
+        <% problem_list.each do |problem| %>
+          <li>
+            <%= column %>: <%= problem %>
+          </li>
+        <% end %>
+      <% end %>
+    </ul>
+  </section>
+<% end %>
+
 <%= form_with model: @work do |f| %>
   
   <%= f.label :category, "Category" %>
   <%= f.select :category, ['album', 'book', 'movie']%>
 
   <%= f.label :title, "Title" %>
-  <%= f.text_field :name %>
+  <%= f.text_field :title %>
 
   <%= f.label :creator, "Creator" %>
   <%= f.text_field :creator %>

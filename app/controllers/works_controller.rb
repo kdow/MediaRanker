@@ -17,7 +17,7 @@ class WorksController < ApplicationController
       redirect_to works_path
     else
       flash.now[:status] = :error
-      flash.now[:message] = "Could not create #{@work.category}"
+      flash.now[:message] = "Could not create"
       render :new, status: :bad_request
     end
   end
