@@ -1,6 +1,10 @@
 require "test_helper"
 
 describe WorksController do
+  before do
+    @work = Work.create!(title: "Test title")
+  end
+
   describe "index" do
     it "can get index" do
       get works_path
@@ -71,11 +75,22 @@ describe WorksController do
     end
 
     it "functions for a work that exists" do
-      work = Work.create!(title: "Test title")
-
-      get work_path(work.id)
+      get work_path(@work.id)
 
       must_respond_with :success
+    end
+  end
+
+  describe "edit" do
+    it "responds with OK for a real work" do
+      get edit_work_path(@work)
+      must_respond_with :ok
+    end
+
+    it "responds with NOT FOUND for a fake work" do
+      work_id = Work.last.id + 1
+      get edit_work_path(work_id)
+      must_respond_with :not_found
     end
   end
 end
