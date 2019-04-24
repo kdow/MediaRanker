@@ -93,4 +93,50 @@ describe WorksController do
       must_respond_with :not_found
     end
   end
+
+  describe "update" do
+    before do
+      @work_data = {
+        work: {
+          title: "New title",
+        },
+      }
+    end
+
+    it "changes the data on the model" do
+      @work.assign_attributes(@work_data[:work])
+      expect(@work).must_be :valid?
+      @work.reload
+
+      patch work_path(@work), params: @work_data
+
+      must_respond_with :redirect
+      must_redirect_to work_path(@work)
+
+      check_flash
+
+      @work.reload
+      expect(@work.title).must_equal(@work_data[:work][:title])
+    end
+
+    it "responds with NOT FOUND for a fake book" do
+      work_id = Work.last.id + 1
+      patch work_path(work_id), params: @work_data
+      must_respond_with :not_found
+    end
+
+    it "responds with BAD REQUEST for bad data" do
+      @work_data[:work][:title] = ""
+
+      @work.assign_attributes(@work_data[:work])
+      expect(@work).wont_be :valid?
+      @work.reload
+
+      patch work_path(@work), params: @work_data
+
+      must_respond_with :bad_request
+
+      check_flash(:error)
+    end
+  end
 end
