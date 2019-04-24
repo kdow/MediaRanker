@@ -1,0 +1,21 @@
+<h2>Add a new work</h2>
+
+<%= form_with model: @work do |f| %>
+  
+  <%= f.label :category, "Category" %>
+  <%= f.select :category, ['album', 'book', 'movie']%>
+
+  <%= f.label :title, "Title" %>
+  <%= f.text_field :name %>
+
+  <%= f.label :creator, "Creator" %>
+  <%= f.text_field :creator %>
+
+  <%= f.label :publication_year, "Publication Year" %>
+  <%= f.text_field :publication_year %>
+
+  <%= f.label :description, "Description" %>
+  <%= f.text_area :creator %>
+
+  <%= f.submit "Create Work" %>
+<% end %>

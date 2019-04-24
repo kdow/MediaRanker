@@ -8,4 +8,12 @@ describe WorksController do
       must_respond_with :success
     end
   end
+
+  describe "new" do
+    it "can get the new work page" do
+      get new_work_path
+
+      must_respond_with :success
+    end
+  end
 end
