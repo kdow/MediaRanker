@@ -5,7 +5,7 @@
   <% Work.where(category: "album").each do |work| %>
     <li>
       <strong>
-        <%= work.title %>
+        <%= link_to "#{work.title}", work_path(work.id)  %>
       </strong>
       by <%= work.creator %>
       <%= work.publication_year %>
@@ -20,7 +20,7 @@
   <% Work.where(category: "book").each do |work| %>
     <li>
       <strong>
-        <%= work.title %>
+        <%= link_to "#{work.title}", work_path(work.id)  %>
       </strong>
       by <%= work.creator %>
       <%= work.publication_year %>
@@ -35,7 +35,7 @@
   <% Work.where(category: "movie").each do |work| %>
     <li>
       <strong>
-        <%= work.title %>
+        <%= link_to "#{work.title}", work_path(work.id)  %>
       </strong>
       by <%= work.creator %>
       <%= work.publication_year %>

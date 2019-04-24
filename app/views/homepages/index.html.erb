@@ -12,7 +12,7 @@
   <% movies.each do |movie| %>
     <li>
       <strong>
-        <%= movie.title %>
+        <%= link_to "#{movie.title}", work_path(movie.id) %>
       </strong>
       by <%= movie.creator %>
     </li>
@@ -22,7 +22,7 @@
   <% books.each do |book| %>
     <li>
       <strong>
-        <%= book.title %>
+        <%= link_to "#{book.title}", work_path(book.id) %>
       </strong>
       by <%= book.creator %>
     </li>
@@ -32,7 +32,7 @@
   <% albums.each do |album| %>
     <li>
       <strong>
-        <%= album.title %>
+        <%= link_to "#{album.title}", work_path(album.id) %>
       </strong>
       by <%= album.creator %>
     </li>
