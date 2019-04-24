@@ -42,6 +42,25 @@ class WorksController < ApplicationController
     end
   end
 
+  def update
+    @work = Work.find_by(id: params[:id])
+
+    unless @work
+      head :not_found
+      return
+    end
+
+    if @work.update(work_params)
+      flash[:status] = :success
+      flash[:message] = "Successfully updated work #{@work.id}"
+      redirect_to work_path(@work)
+    else
+      flash.now[:status] = :error
+      flash.now[:message] = "Could not save work #{@work.id}"
+      render :edit, status: :bad_request
+    end
+  end
+
   private
 
   def work_params
