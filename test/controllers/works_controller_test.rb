@@ -29,7 +29,7 @@ describe WorksController do
           title: "Company",
           creator: "Max Barry",
           publication_year: 2007,
-          description: "From the outside, Zephyr is just another bland corporate monolith, but behind its glass doors business is far from usual: the sales reps use self help books as manuals, no one has seen the CEO, no one knows exactly what they are selling, and missing donuts are the cause of office intrigue.",
+          description: "Office shenanigans",
         },
       }
 
@@ -164,7 +164,6 @@ describe WorksController do
         delete work_path(work_id)
       }.wont_change "Work.count"
 
-      # Assert
       must_respond_with :not_found
     end
   end
