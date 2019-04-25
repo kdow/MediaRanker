@@ -26,14 +26,37 @@ describe Work do
       spotlight = Work.get_spotlight
       expect(spotlight).must_be_instance_of Work
     end
+
+    it "returns nil if there are no works" do
+      Work.destroy_all
+      expect(Work.get_spotlight).must_be_nil
+    end
   end
 
   describe "get_top_ten" do
-    it "returns an array of up to 10 Work objects" do
-      top_ten = Work.get_top_ten("book")
-      expect(top_ten).must_be_instance_of Array
-      expect(top_ten.first).must_be_instance_of Work
-      expect(top_ten.length).must_be :<=, 10
+    before do
+      @top_ten = Work.get_top_ten("book")
+    end
+    it "returns an array of Work objects" do
+      expect(@top_ten).must_be_instance_of Array
+      expect(@top_ten.first).must_be_instance_of Work
+    end
+
+    it "works if there are less than 10 works" do
+      expect(@top_ten.length).must_be :<, 10
+    end
+
+    it "returns an array of 10 Work objects if there are more than 10 works" do
+      11.times do
+        Work.create(category: "album", title: "test")
+      end
+      expect(Work.where(category: "album").length).must_be :>, 10
+      expect(Work.get_top_ten("album").length).must_equal 10
+    end
+
+    it "returns an empty array if there are no works" do
+      Work.destroy_all
+      expect(Work.get_top_ten("movie")).must_be_empty
     end
   end
 end

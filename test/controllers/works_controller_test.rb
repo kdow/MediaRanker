@@ -13,13 +13,10 @@ describe WorksController do
     end
 
     it "renders even if there are zero works" do
-      # Arrange
       Work.destroy_all
 
-      # Act
       get works_path
 
-      # Assert
       must_respond_with :success
     end
   end
