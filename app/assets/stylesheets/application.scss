@@ -15,3 +15,35 @@
 @import "bootstrap";
 /* Import scss content */
 @import "**/*";
+
+header {
+  background-color: #B2DFDB;
+}
+
+header h1 {
+  text-align: center;
+}
+
+header h1 a, h1 a:hover {
+  color: #FF5722;
+  text-decoration: none;
+}
+
+header h1 small {
+  color: white;
+}
+
+.nav-link, .nav-link:hover,  {
+  color: #00796B;
+}
+
+.btn {
+  color: white;
+  background-color: #26A69A;
+  border-color:  #26A69A;
+}
+
+.btn:hover {
+  background-color: #00796B;
+  color: white;
+}
