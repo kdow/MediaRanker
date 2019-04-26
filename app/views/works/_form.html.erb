@@ -14,21 +14,30 @@
 <% end %>
 
 <%= form_with model: @work do |f| %>
+  <div class="form-group">
+    <%= f.label :category, "Category" %>
+    <%= f.select :category, ['album', 'book', 'movie'], class: "form-control"%>
+  </div>
   
-  <%= f.label :category, "Category" %>
-  <%= f.select :category, ['album', 'book', 'movie'], class: "form-control"%>
+  <div class="form-group">
+    <%= f.label :title, "Title" %>
+    <%= f.text_field :title, class: "form-control" %>
+  </div>
 
-  <%= f.label :title, "Title" %>
-  <%= f.text_field :title, class: "form-control" %>
+  <div class="form-group">
+    <%= f.label :creator, "Creator" %>
+    <%= f.text_field :creator , class: "form-control"%>
+  </div>
 
-  <%= f.label :creator, "Creator" %>
-  <%= f.text_field :creator , class: "form-control"%>
+  <div class="form-group">
+    <%= f.label :publication_year, "Publication Year" %>
+    <%= f.text_field :publication_year, class: "form-control" %>
+  </div>
 
-  <%= f.label :publication_year, "Publication Year" %>
-  <%= f.text_field :publication_year, class: "form-control" %>
-
-  <%= f.label :description, "Description" %>
-  <%= f.text_area :creator, class: "form-control" %>
+  <div class="form-group">
+    <%= f.label :description, "Description" %>
+    <%= f.text_area :creator, class: "form-control" %>
+  </div>
 
   <%= f.submit button_text, class: "btn btn-primary" %>
 <% end %>
