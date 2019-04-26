@@ -7,33 +7,41 @@
   by <%= spotlight.creator %>
   <%= spotlight.description %>
 </section>
-<h2>Top Movies</h2>
-  <% movies = Work.get_top_ten("movie") %>
-  <% movies.each do |movie| %>
-    <li>
-      <strong>
-        <%= link_to "#{movie.title}", work_path(movie.id) %>
-      </strong>
-      by <%= movie.creator %>
-    </li>
-  <% end %>
-<h2>Top Books</h2>
-  <% books = Work.get_top_ten("book") %>
-  <% books.each do |book| %>
-    <li>
-      <strong>
-        <%= link_to "#{book.title}", work_path(book.id) %>
-      </strong>
-      by <%= book.creator %>
-    </li>
-  <% end %>
-<h2>Top Albums</h2>
-  <% albums = Work.get_top_ten("album") %>
-  <% albums.each do |album| %>
-    <li>
-      <strong>
-        <%= link_to "#{album.title}", work_path(album.id) %>
-      </strong>
-      by <%= album.creator %>
-    </li>
-  <% end %>
+<div class="row">
+  <section class="col">
+  <h2>Top Movies</h2>
+    <% movies = Work.get_top_ten("movie") %>
+    <% movies.each do |movie| %>
+      <li>
+        <strong>
+          <%= movie.title %>
+        </strong>
+        by <%= movie.creator %>
+      </li>
+    <% end %>
+  </section>
+  <section class="col">
+  <h2>Top Books</h2>
+    <% books = Work.get_top_ten("book") %>
+    <% books.each do |book| %>
+      <li>
+        <strong>
+          <%= book.title %>
+        </strong>
+        by <%= book.creator %>
+      </li>
+    <% end %>
+  </section>
+  <section class="col">
+  <h2>Top Albums</h2>
+    <% albums = Work.get_top_ten("album") %>
+    <% albums.each do |album| %>
+      <li>
+        <strong>
+          <%= album.title %>
+        </strong>
+        by <%= album.creator %>
+      </li>
+    <% end %>
+  </section>
+</div>
