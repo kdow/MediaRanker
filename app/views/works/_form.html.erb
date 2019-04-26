@@ -16,19 +16,19 @@
 <%= form_with model: @work do |f| %>
   
   <%= f.label :category, "Category" %>
-  <%= f.select :category, ['album', 'book', 'movie']%>
+  <%= f.select :category, ['album', 'book', 'movie'], class: "form-control"%>
 
   <%= f.label :title, "Title" %>
-  <%= f.text_field :title %>
+  <%= f.text_field :title, class: "form-control" %>
 
   <%= f.label :creator, "Creator" %>
-  <%= f.text_field :creator %>
+  <%= f.text_field :creator , class: "form-control"%>
 
   <%= f.label :publication_year, "Publication Year" %>
-  <%= f.text_field :publication_year %>
+  <%= f.text_field :publication_year, class: "form-control" %>
 
   <%= f.label :description, "Description" %>
-  <%= f.text_area :creator %>
+  <%= f.text_area :creator, class: "form-control" %>
 
   <%= f.submit button_text, class: "btn btn-primary" %>
 <% end %>
