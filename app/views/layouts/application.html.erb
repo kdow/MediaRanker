@@ -28,6 +28,7 @@
           </li>
         </ul>
         <%= link_to "Log In", login_path, class: "nav-link btn btn-primary ml-auto"  %>
+        <%= link_to "Log Out", logout_path, method: :post, class: "nav-link btn btn-primary ml-auto"  %>
     </header>
     <%= yield %>
   </body>
