@@ -1,0 +1,9 @@
+<% works.each do |work| %>
+  <li>
+    <strong>
+      <%= link_to "#{work.title}", work_path(work.id) %>
+    </strong>
+    by <%= work.creator %>
+    <p><%= work.votes.count %> votes<p>
+  </li>
+<% end %>
