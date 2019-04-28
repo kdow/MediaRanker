@@ -1,11 +1,11 @@
 <section>
-  <h2>Media Spotlight</h2>
+  <h2>Media Spotlight: </h2>
   <% spotlight = Work.get_spotlight %>
   <strong>
     <%= spotlight.title %>
   </strong>
   by <%= spotlight.creator %>
-  <%= spotlight.description %>
+  <p><%= spotlight.votes.count %> votes -   <%= spotlight.description %><p>
 </section>
 <div class="row">
   <section class="col">
@@ -17,6 +17,7 @@
           <%= movie.title %>
         </strong>
         by <%= movie.creator %>
+        <p><%= movie.votes.count %> votes<p>
       </li>
     <% end %>
   </section>
@@ -29,6 +30,7 @@
           <%= book.title %>
         </strong>
         by <%= book.creator %>
+        <p><%= book.votes.count %> votes<p>
       </li>
     <% end %>
   </section>
@@ -41,6 +43,7 @@
           <%= album.title %>
         </strong>
         by <%= album.creator %>
+        <p><%= album.votes.count %> votes<p>
       </li>
     <% end %>
   </section>
