@@ -13,12 +13,18 @@
   </section>
 <% end %>
 
-<h2> <%= @work.title %> </h2>
-<p> Created by: <%= @work.creator %> </p>
-<p> Published: <%= @work.publication_year %>
+<section class="details">
+  <h2> <%= @work.title %> </h2>
+  <p> Created by: <%= @work.creator %> </p>
+  <p> Published: <%= @work.publication_year %></p>
+  <p><%= @work.description %></p>
+</section>
 
-<%= link_to "Edit Work", edit_work_path(@work.id), class: "btn btn-primary" %>
-<%= link_to "Upvote", upvote_path(@work.id), class: "btn btn-primary" %>
-<%= link_to "Delete Work", work_path(@work.id), method: :delete, data: { confirm: "Are you sure?"}, class: "btn btn-danger" %>
+<section class="detail-buttons">
+  <%= link_to "Back to media ranks", works_path, class: "btn btn-primary" %>
+  <%= link_to "Edit", edit_work_path(@work.id), class: "btn btn-primary" %>
+  <%= link_to "Upvote", upvote_path(@work.id), class: "btn btn-primary" %>
+  <%= link_to "Delete", work_path(@work.id), method: :delete, data: { confirm: "Are you sure?"}, class: "btn btn-danger" %>
+</section>
 
-<p> <%= @work.votes.count %> Votes for this <%= @work.category %> </p>
+<h3 id="vote-counts"> <%= @work.votes.count %> Votes for this <%= @work.category %> </h3>
