@@ -2,7 +2,7 @@
 <section>
 <ul>
   <h3>Albums</h3>
-  <% Work.where(category: "album").each do |work| %>
+  <% Work.sorted_works("album").each do |work| %>
     <li>
       <%= work.votes.count %>
       <strong>
@@ -19,7 +19,7 @@
 <section>
 <ul>
   <h3>Books</h3>
-  <% Work.where(category: "book").each do |work| %>
+  <% Work.sorted_works("book").each do |work| %>
     <li>
       <%= work.votes.count %>
       <strong>
@@ -36,7 +36,7 @@
 <section>
 <ul>
   <h3>Movies</h3>
-  <% Work.where(category: "movie").each do |work| %>
+  <% Work.sorted_works("movie").each do |work| %>
     <li>
       <%= work.votes.count %>
       <strong>

@@ -12,4 +12,10 @@ class Work < ApplicationRecord
     works = Work.where(category: category)
     return works.sample(10)
   end
+
+  def self.sorted_works(category)
+    works = Work.where(category: category)
+    works_sorted = works.sort_by { |work| work.votes.count }
+    return works_sorted.reverse
+  end
 end
