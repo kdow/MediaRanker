@@ -27,6 +27,19 @@ describe Work do
       expect(spotlight).must_be_instance_of Work
     end
 
+    it "returns the work with the most votes" do
+      votes_total = Work.all.sum { |work| work.votes.count }
+      expect(votes_total).must_equal 0
+      user = User.first
+      work = Work.create!(title: "test work")
+      Vote.create!(work: work, user: user)
+      new_votes_total = Work.all.sum { |work| work.votes.count }
+      expect(new_votes_total).must_equal 1
+      spotlight = Work.get_spotlight
+      expect(spotlight).must_equal work
+      expect(spotlight.votes.count).must_equal 1
+    end
+
     it "returns nil if there are no works" do
       Work.destroy_all
       expect(Work.get_spotlight).must_be_nil

@@ -21,4 +21,4 @@
 <%= link_to "Upvote", upvote_path(@work.id), class: "btn btn-primary" %>
 <%= link_to "Delete Work", work_path(@work.id), method: :delete, data: { confirm: "Are you sure?"}, class: "btn btn-danger" %>
 
-<p> <%= @work.votes.count %> Votes for this <%= @work.category.capitalize %> </p>
+<p> <%= @work.votes.count %> Votes for this <%= @work.category %> </p>
