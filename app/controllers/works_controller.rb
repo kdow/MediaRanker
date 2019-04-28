@@ -48,6 +48,26 @@ class WorksController < ApplicationController
     redirect_to works_path
   end
 
+  def upvote
+    current_user = User.find_by(id: session[:user_id])
+    if current_user
+      @vote = Vote.new(work_id: @work.id, user_id: current_user.id)
+      if @vote.save
+        flash[:status] = :success
+        flash[:message] = "Successfully upvoted!"
+        redirect_to work_path(@work.id)
+      else
+        flash[:status] = :failure
+        flash[:message] = "Could not upvote work #{@work.id}"
+        render :show
+      end
+    else
+      flash[:status] = :failure
+      flash[:message] = "You must log in to do that"
+      redirect_to login_path
+    end
+  end
+
   private
 
   def work_params
