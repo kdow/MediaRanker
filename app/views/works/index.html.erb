@@ -4,11 +4,13 @@
   <h3>Albums</h3>
   <% Work.where(category: "album").each do |work| %>
     <li>
+      <%= work.votes.count %>
       <strong>
         <%= link_to "#{work.title}", work_path(work.id)  %>
       </strong>
       by <%= work.creator %>
       <%= work.publication_year %>
+      <%= link_to "Upvote", upvote_path(work.id), class: "btn btn-primary" %>
     </li>
   <% end %>
 </ul>
@@ -19,11 +21,13 @@
   <h3>Books</h3>
   <% Work.where(category: "book").each do |work| %>
     <li>
+      <%= work.votes.count %>
       <strong>
         <%= link_to "#{work.title}", work_path(work.id)  %>
       </strong>
       by <%= work.creator %>
       <%= work.publication_year %>
+      <%= link_to "Upvote", upvote_path(work.id), class: "btn btn-primary" %>
     </li>
   <% end %>
 </ul>
@@ -34,11 +38,13 @@
   <h3>Movies</h3>
   <% Work.where(category: "movie").each do |work| %>
     <li>
+      <%= work.votes.count %>
       <strong>
         <%= link_to "#{work.title}", work_path(work.id)  %>
       </strong>
       by <%= work.creator %>
       <%= work.publication_year %>
+      <%= link_to "Upvote", upvote_path(work.id), class: "btn btn-primary" %>
     </li>
   <% end %>
 </ul>
