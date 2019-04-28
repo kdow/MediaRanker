@@ -58,7 +58,7 @@ class WorksController < ApplicationController
         redirect_to work_path(@work.id)
       else
         flash[:status] = :failure
-        flash[:message] = "Could not upvote work #{@work.id}"
+        flash[:message] = "Could not upvote"
         render :show
       end
     else
