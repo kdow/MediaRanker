@@ -1,3 +1,49 @@
 // Place all the styles related to the Homepages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@import url('https://fonts.googleapis.com/css?family=Gudea');
+
+body {
+  font-family: "Gudea", sans-serif;
+}
+
+#spotlight h2 {
+  color: #424242;
+  font-weight: bold;
+}
+
+#spotlight a {
+  color: #26A69A;
+  text-decoration: underline;
+}
+
+#spotlight p {
+  color: #212529;
+}
+
+.top-ten {
+  color: #26A69A;
+}
+
+.top-ten p {
+  color: #212529;
+}
+
+.top-ten a {
+  color: #26A69A;
+  font-weight: bold;
+}
+
+.top-ten small {
+  color: slategray;
+}
+
+.top-ten li {
+  list-style: none;
+}
+
+.top-ten h2 {
+  font-weight: bold;
+  border-bottom: 2px solid;
+  border-bottom-color: #B2DFDB;
+}
