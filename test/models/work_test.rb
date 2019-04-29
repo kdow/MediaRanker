@@ -30,14 +30,36 @@ describe Work do
     it "returns the work with the most votes" do
       votes_total = Work.all.sum { |work| work.votes.count }
       expect(votes_total).must_equal 0
-      user = User.first
-      work = Work.create!(title: "test work")
+      user = users(:kelly)
+      work = works(:lexicon)
       Vote.create!(work: work, user: user)
       new_votes_total = Work.all.sum { |work| work.votes.count }
       expect(new_votes_total).must_equal 1
       spotlight = Work.get_spotlight
       expect(spotlight).must_equal work
       expect(spotlight.votes.count).must_equal 1
+    end
+
+    it "returns the first work created in the case of a tie" do
+      user = users(:kelly)
+      work1 = works(:lexicon)
+      work2 = works(:amelie)
+      Vote.create!(work: work1, user: user)
+      Vote.create!(work: work2, user: user)
+
+      spotlight = Work.get_spotlight
+
+      expect(spotlight).must_equal work1
+    end
+
+    it "returns the first work created if all works have no votes" do
+      work1 = works(:lexicon)
+      work2 = works(:amelie)
+      work3 = works(:annihilation)
+
+      spotlight = Work.get_spotlight
+
+      expect(spotlight).must_equal work1
     end
 
     it "returns nil if there are no works" do
