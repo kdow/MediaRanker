@@ -1,10 +1,10 @@
 <section id="spotlight">
   <h2>Media Spotlight: 
   <% spotlight = Work.get_spotlight %>
-  <%# <%= link_to "#{spotlight.title}", work_path(spotlight.id) %> %>
-  <%# by <%= spotlight.creator %> %>
+  <%=# link_to "#{spotlight.title}", work_path(spotlight.id) %>
+  by <%=# spotlight.creator %>
   </h2>
-  <%# <p><%= spotlight.votes.count %> votes -   <%=# spotlight.description<p> %> %>
+  <p><%=# spotlight.votes.count votes -   <%=# spotlight.description<p> %>
 </section>
 <hr>
 <div class="row">
