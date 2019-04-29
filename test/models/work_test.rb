@@ -72,4 +72,22 @@ describe Work do
       expect(Work.get_top_ten("movie")).must_be_empty
     end
   end
+
+  describe "sorted_works" do
+    it "returns a Works collection sorted in descending order by votes" do
+      work1 = works(:amelie)
+      work2 = works(:annihilation)
+      user1 = users(:kelly)
+      user2 = users(:jazzy)
+      vote1 = Vote.create!(work_id: work1.id, user_id: user1.id)
+      vote2 = Vote.create!(work_id: work1.id, user_id: user2.id)
+      vote3 = Vote.create!(work_id: work2.id, user_id: user1.id)
+
+      works = Work.sorted_works("movie")
+
+      expect(works.first).must_be_instance_of Work
+      expect(works.first).must_equal work1
+      expect(works.last).must_equal work2
+    end
+  end
 end

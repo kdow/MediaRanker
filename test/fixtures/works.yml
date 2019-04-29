@@ -1,16 +1,22 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 lexicon:
-  category: "book"
-  title: "Lexicon"
-  creator: "Max Barry"
+  category: book
+  title: Lexicon
+  creator: Max Barry
   publication_year: 2013
-  description: "Power of words"
+  description: Power of words
 
 amelie:
-  category: "movie"
-  title: "Amélie"
-  creator: "Jean-Pierre Jeunet"
+  category: movie
+  title: Amélie
+  creator: Jean-Pierre Jeunet
   publication_year: 2001
-  description: "Parisian woman creates her own world"
+  description: Parisian woman creates her own world
 
+annihilation:
+  category: movie
+  title: Annihilation
+  creator: Alex Garland
+  publication_year: 2018
+  description: Dangerous mission where laws of nature don't apply 
