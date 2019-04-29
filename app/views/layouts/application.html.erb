@@ -30,8 +30,13 @@
             <%= link_to "View all users", users_path, class: "nav-link"  %>
           </li>
         </ul>
-        <%= link_to "Log In", login_path, class: "nav-link btn btn-primary ml-auto"  %>
-        <%= link_to "Log Out", logout_path, method: :post, class: "nav-link btn btn-primary ml-auto"  %>
+        <% if session[:user_id] %>
+          <% current_user = User.find_by_id(session[:user_id])%>
+          <%= link_to "Logged in as #{current_user.username}", login_path, class: "nav-link btn btn-primary ml-auto"  %>
+          <%= link_to "Log Out", logout_path, method: :post, class: "nav-link btn btn-primary ml-auto"  %>
+        <% else %>
+          <%= link_to "Log In", login_path, class: "nav-link btn btn-primary ml-auto"  %>
+        <% end %>
     </header>
     <main>
       <% alert_type = flash[:status] == :error ? :danger : flash[:status] %>
