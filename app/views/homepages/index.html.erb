@@ -1,4 +1,5 @@
-<section id="spotlight">
+
+<section id="spotlight" class="margin">
   <% spotlight = Work.get_spotlight %>
   <% unless spotlight.nil? %>
     <h2>Media Spotlight: 
@@ -6,23 +7,21 @@
       by <%= spotlight.creator %>
     </h2>
     <p><%= spotlight.votes.count %> votes -   <%= spotlight.description %><p>
-  <% else %>
-    <h2>No Media Spotlight</h2>
   <% end %>
 </section>
 <hr>
 <div class="row">
-  <section class="col top-ten">
+  <section class="col top-ten margin">
   <h2>Top Movies</h2>
     <% movies = Work.get_top_ten("movie") %>
     <%= render partial: "works", locals: { works: movies } %>
   </section>
-  <section class="col top-ten">
+  <section class="col top-ten margin">
   <h2>Top Books</h2>
     <% books = Work.get_top_ten("book") %>
     <%= render partial: "works", locals: { works: books } %>
   </section>
-  <section class="col top-ten">
+  <section class="col top-ten margin">
   <h2>Top Albums</h2>
     <% albums = Work.get_top_ten("album") %>
     <%= render partial: "works", locals: { works: albums } %>
