@@ -10,6 +10,31 @@ describe UsersController do
     }
   end
 
+  describe "index" do
+    it "can get index" do
+      get users_path
+
+      must_respond_with :success
+    end
+  end
+
+  describe "show" do
+    it "returns a 404 status code if the user doesn't exist" do
+      user_id = 12345392487
+      expect(User.find_by(id: user_id)).must_be_nil
+
+      get user_path(user_id)
+
+      must_respond_with :not_found
+    end
+
+    it "functions for a user that exists" do
+      get user_path(@user.id)
+
+      must_respond_with :success
+    end
+  end
+
   describe "login_form" do
     it "can get the login page" do
       get login_path

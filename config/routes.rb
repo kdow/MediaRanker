@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   root "homepages#index"
 
   resources :works
+  resources :users, only: [:index, :show]
+
   get "/works/:id/upvote", to: "works#upvote", as: "upvote"
 
   get "/login", to: "users#login_form", as: "login"
