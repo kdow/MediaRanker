@@ -25,4 +25,20 @@ class ActiveSupport::TestCase
     expect(flash[:status]).must_equal(expected_status)
     expect(flash[:message]).wont_be_nil
   end
+
+  def perform_login(user = nil)
+    user ||= User.first
+
+    user = User.first
+    login_data = {
+      user: {
+        username: user.username,
+      },
+    }
+    post login_path, params: login_data
+
+    expect(session[:user_id]).must_equal user.id
+
+    return user
+  end
 end

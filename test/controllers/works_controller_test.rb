@@ -175,4 +175,41 @@ describe WorksController do
       must_respond_with :not_found
     end
   end
+
+  describe "upvote" do
+    it "disallows guest users voting if they have not logged in" do
+      user = users(:kelly)
+      work = works(:amelie)
+      get upvote_path(work, user)
+
+      expect {
+        get upvote_path(work, user)
+      }.wont_change "Vote.count"
+
+      must_respond_with :redirect
+      must_redirect_to login_path
+    end
+
+    it "allows a logged-in user to vote for a work they haven't already voted for" do
+      user = perform_login
+      work = works(:amelie)
+
+      expect {
+        get upvote_path(work, user)
+      }.must_change "Vote.count", +1
+
+      must_respond_with :redirect
+      must_redirect_to work_path(work.id)
+    end
+
+    it "disallows a logged-in user to vote for a work they have previously voted for" do
+      user = perform_login
+      work = works(:amelie)
+      get upvote_path(work, user)
+
+      expect {
+        get upvote_path(work, user)
+      }.wont_change "Vote.count"
+    end
+  end
 end

@@ -33,11 +33,8 @@ describe UsersController do
   end
 
   describe "logout" do
-    before do
-      post login_path, params: @login_data
-    end
-
     it "will logout user" do
+      perform_login
       post logout_path
 
       expect(session[:user_id]).must_equal nil
