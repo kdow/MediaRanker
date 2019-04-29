@@ -1,4 +1,4 @@
-<section id="spotlight">
+<section id="spotlight" class="margin">
   <h2>Media Spotlight: 
   <% spotlight = Work.get_spotlight %>
   <%= link_to "#{spotlight.title}", work_path(spotlight.id) %>
@@ -8,17 +8,17 @@
 </section>
 <hr>
 <div class="row">
-  <section class="col top-ten">
+  <section class="col top-ten margin">
   <h2>Top Movies</h2>
     <% movies = Work.get_top_ten("movie") %>
     <%= render partial: "works", locals: { works: movies } %>
   </section>
-  <section class="col top-ten">
+  <section class="col top-ten margin">
   <h2>Top Books</h2>
     <% books = Work.get_top_ten("book") %>
     <%= render partial: "works", locals: { works: books } %>
   </section>
-  <section class="col top-ten">
+  <section class="col top-ten margin">
   <h2>Top Albums</h2>
     <% albums = Work.get_top_ten("album") %>
     <%= render partial: "works", locals: { works: albums } %>
